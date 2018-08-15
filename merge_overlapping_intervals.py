@@ -28,3 +28,33 @@ class Solution:
             else:
                 res.append(i)
         return res
+
+#edge case
+def mergeIntervalsPalantirInterview(l):
+    #1. sort
+    l.sort(key = lambda: i[0]) #python will be nlogn
+    
+    prev = [-1,-1] #
+    result = []
+    isFirstGo = True
+    #2 iterate through sorted list
+    for i in l:
+        if isFirstGo:
+            isFirstGo = False
+            prev = l[0]
+            continue
+        if (prev[1] >= i[0]): #overlap
+            prev[1] = max(i[1], prev[1])
+        else: #no overlap
+            result.append(prev)
+            prev = i
+    result.append(prev)
+        
+    return result
+    
+#[-1,-1]
+#[1,5]
+#[6,11]
+
+result [[1,5], [6,11]]
+        
