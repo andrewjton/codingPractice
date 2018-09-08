@@ -37,10 +37,10 @@ class Solution:
     def subsetRecursiveUtil(self, result, temp, nums, startP):
         result.append(temp)
         i = startP
-        # while(i < len(nums)):
-        #     if (i > startP and nums[i] == nums[i-1]): #if there is a duplicate, skip it & it's future combinations
-        #         i += 1
-        #         continue
+        while(i < len(nums)):
+            if (i > startP and nums[i] == nums[i-1]): #if there is a duplicate, skip it & it's future combinations
+                i += 1
+                continue
             self.subsetRecursiveUtil(result, temp + [nums[i]], nums, i+1)
             i += 1
         #note: you don't have to return anything because in python, list variable is a pointer which is passed down by method. ("pass by object reference")
